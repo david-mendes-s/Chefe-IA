@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1763860931085,
-      "tag": "0000_lush_genesis",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1763873111456,
-      "tag": "0001_powerful_hairball",
+      "when": 1763907001101,
+      "tag": "0000_flaky_sister_grimm",
       "breakpoints": true
     }
   ]

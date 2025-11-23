@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "user_1",
+      "id": "550e8400-e29b-41d4-a716-446655440001",
       "name": "João Silva",
       "email": "joao.silva@email.com",
       "emailVerified": true,
@@ -11,7 +11,7 @@
       "updatedAt": "2024-01-15T10:30:00.000Z"
     },
     {
-      "id": "user_2",
+      "id": "550e8400-e29b-41d4-a716-446655440002",
       "name": "Maria Santos",
       "email": "maria.santos@email.com",
       "emailVerified": true,
@@ -23,22 +23,22 @@
   ],
   "sessions": [
     {
-      "id": "session_1",
+      "id": "650e8400-e29b-41d4-a716-446655440001",
       "expiresAt": "2025-01-15T10:30:00.000Z",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.session1",
       "createdAt": "2024-11-15T10:30:00.000Z",
       "updatedAt": "2024-11-15T10:30:00.000Z",
       "ipAddress": "192.168.1.100",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      "userId": "user_1"
+      "userId": "550e8400-e29b-41d4-a716-446655440001"
     }
   ],
   "accounts": [
     {
-      "id": "account_1",
+      "id": "750e8400-e29b-41d4-a716-446655440001",
       "accountId": "google_123456789",
       "providerId": "google",
-      "userId": "user_1",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
       "accessToken": "ya29.a0AfH6SMBx...",
       "refreshToken": "1//0gHZK9X...",
       "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6...",
@@ -54,7 +54,7 @@
   "contexts": [
     {
       "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-      "userId": "user_1",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
       "title": "Aprender Inglês",
       "description": "Quero atingir fluência em inglês para conseguir um emprego remoto.",
       "deadline": "2025-12-31T23:59:59.000Z",
@@ -64,7 +64,7 @@
     },
     {
       "id": "b2c3d4e5-f6a7-4b6c-9d0e-1f2a3b4c5d6e",
-      "userId": "user_1",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
       "title": "Lançar MVP do SaaS",
       "description": "Desenvolver e lançar a primeira versão do meu produto.",
       "deadline": "2025-06-30T23:59:59.000Z",
@@ -76,7 +76,7 @@
   "dailyCycles": [
     {
       "id": "c3d4e5f6-a7b8-4c7d-0e1f-2a3b4c5d6e7f",
-      "userId": "user_1",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
       "date": "2024-11-22T00:00:00.000Z",
       "morningBriefing": "Bom dia, João! Hoje o foco é terminar a API de autenticação. Lembre-se que consistência é chave.",
       "checkoutStatus": "Completed",
@@ -87,7 +87,7 @@
     },
     {
       "id": "d4e5f6a7-b8c9-4d8e-1f2a-3b4c5d6e7f8a",
-      "userId": "user_1",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
       "date": "2024-11-23T00:00:00.000Z",
       "morningBriefing": "Olá João. Hoje vamos testar o que você fez ontem. Sem pressa, mas sem pausa.",
       "checkoutStatus": "Pending",
@@ -147,7 +147,7 @@
   "userMemory": [
     {
       "id": "c9d0e1f2-a3b4-4c3d-6e7f-8a9b0c1d2e3f",
-      "userId": "user_1",
+      "userId": "550e8400-e29b-41d4-a716-446655440001",
       "shortTermSummary": "Focado no MVP, tem negligenciado o inglês.",
       "longTermFacts": "Desenvolvedor Fullstack, prefere trabalhar de manhã, quer morar fora.",
       "metadata": {
