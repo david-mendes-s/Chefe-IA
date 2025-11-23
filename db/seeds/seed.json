@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "name": "João Silva",
+      "email": "joao.silva@email.com",
+      "emailVerified": true,
+      "image": "https://i.pravatar.cc/150?img=1",
+      "bossPersona": "O Estrategista",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z"
+    },
+    {
+      "id": "user_2",
+      "name": "Maria Santos",
+      "email": "maria.santos@email.com",
+      "emailVerified": true,
+      "image": "https://i.pravatar.cc/150?img=5",
+      "bossPersona": "A Motivadora",
+      "createdAt": "2024-02-20T14:45:00.000Z",
+      "updatedAt": "2024-02-20T14:45:00.000Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "session_1",
+      "expiresAt": "2025-01-15T10:30:00.000Z",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.session1",
+      "createdAt": "2024-11-15T10:30:00.000Z",
+      "updatedAt": "2024-11-15T10:30:00.000Z",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "userId": "user_1"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "account_1",
+      "accountId": "google_123456789",
+      "providerId": "google",
+      "userId": "user_1",
+      "accessToken": "ya29.a0AfH6SMBx...",
+      "refreshToken": "1//0gHZK9X...",
+      "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6...",
+      "accessTokenExpiresAt": "2024-12-15T11:30:00.000Z",
+      "refreshTokenExpiresAt": "2025-06-15T10:30:00.000Z",
+      "scope": "openid profile email",
+      "password": null,
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z"
+    }
+  ],
+  "verifications": [],
+  "contexts": [
+    {
+      "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "userId": "user_1",
+      "title": "Aprender Inglês",
+      "description": "Quero atingir fluência em inglês para conseguir um emprego remoto.",
+      "deadline": "2025-12-31T23:59:59.000Z",
+      "isActive": true,
+      "createdAt": "2024-11-01T10:00:00.000Z",
+      "updatedAt": "2024-11-01T10:00:00.000Z"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-4b6c-9d0e-1f2a3b4c5d6e",
+      "userId": "user_1",
+      "title": "Lançar MVP do SaaS",
+      "description": "Desenvolver e lançar a primeira versão do meu produto.",
+      "deadline": "2025-06-30T23:59:59.000Z",
+      "isActive": true,
+      "createdAt": "2024-11-05T14:00:00.000Z",
+      "updatedAt": "2024-11-05T14:00:00.000Z"
+    }
+  ],
+  "dailyCycles": [
+    {
+      "id": "c3d4e5f6-a7b8-4c7d-0e1f-2a3b4c5d6e7f",
+      "userId": "user_1",
+      "date": "2024-11-22T00:00:00.000Z",
+      "morningBriefing": "Bom dia, João! Hoje o foco é terminar a API de autenticação. Lembre-se que consistência é chave.",
+      "checkoutStatus": "Completed",
+      "dailyMood": 4,
+      "endDaySummary": "João conseguiu finalizar a autenticação, mas ficou cansado. Amanhã vamos focar em testes.",
+      "createdAt": "2024-11-22T06:00:00.000Z",
+      "updatedAt": "2024-11-22T22:00:00.000Z"
+    },
+    {
+      "id": "d4e5f6a7-b8c9-4d8e-1f2a-3b4c5d6e7f8a",
+      "userId": "user_1",
+      "date": "2024-11-23T00:00:00.000Z",
+      "morningBriefing": "Olá João. Hoje vamos testar o que você fez ontem. Sem pressa, mas sem pausa.",
+      "checkoutStatus": "Pending",
+      "dailyMood": null,
+      "endDaySummary": null,
+      "createdAt": "2024-11-23T06:00:00.000Z",
+      "updatedAt": "2024-11-23T06:00:00.000Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "e5f6a7b8-c9d0-4e9f-2a3b-4c5d6e7f8a9b",
+      "dailyCycleId": "c3d4e5f6-a7b8-4c7d-0e1f-2a3b4c5d6e7f",
+      "contextId": "b2c3d4e5-f6a7-4b6c-9d0e-1f2a3b4c5d6e",
+      "title": "Configurar Better Auth",
+      "aiReasoning": "Passo fundamental para o MVP.",
+      "status": "Done",
+      "userFeedback": null,
+      "origin": "AI_Generated",
+      "createdAt": "2024-11-22T06:05:00.000Z",
+      "updatedAt": "2024-11-22T15:30:00.000Z"
+    },
+    {
+      "id": "f6a7b8c9-d0e1-4f0a-3b4c-5d6e7f8a9b0c",
+      "dailyCycleId": "c3d4e5f6-a7b8-4c7d-0e1f-2a3b4c5d6e7f",
+      "contextId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "title": "Ler 5 páginas em inglês",
+      "aiReasoning": "Manter o hábito de leitura diária.",
+      "status": "Failed",
+      "userFeedback": "Não tive tempo, foquei muito no código.",
+      "origin": "AI_Generated",
+      "createdAt": "2024-11-22T06:05:00.000Z",
+      "updatedAt": "2024-11-22T22:00:00.000Z"
+    },
+    {
+      "id": "a7b8c9d0-e1f2-4a1b-4c5d-6e7f8a9b0c1d",
+      "dailyCycleId": "d4e5f6a7-b8c9-4d8e-1f2a-3b4c5d6e7f8a",
+      "contextId": "b2c3d4e5-f6a7-4b6c-9d0e-1f2a3b4c5d6e",
+      "title": "Escrever testes unitários para Auth",
+      "aiReasoning": "Garantir estabilidade antes de avançar.",
+      "status": "Todo",
+      "userFeedback": null,
+      "origin": "AI_Generated",
+      "createdAt": "2024-11-23T06:05:00.000Z",
+      "updatedAt": "2024-11-23T06:05:00.000Z"
+    }
+  ],
+  "checkoutLogs": [
+    {
+      "id": "b8c9d0e1-f2a3-4b2c-5d6e-7f8a9b0c1d2e",
+      "dailyCycleId": "c3d4e5f6-a7b8-4c7d-0e1f-2a3b4c5d6e7f",
+      "question": "Vi que você não leu em inglês hoje. O que houve?",
+      "answer": "Fiquei muito focado no bug da autenticação e perdi a hora.",
+      "createdAt": "2024-11-22T22:05:00.000Z"
+    }
+  ],
+  "userMemory": [
+    {
+      "id": "c9d0e1f2-a3b4-4c3d-6e7f-8a9b0c1d2e3f",
+      "userId": "user_1",
+      "shortTermSummary": "Focado no MVP, tem negligenciado o inglês.",
+      "longTermFacts": "Desenvolvedor Fullstack, prefere trabalhar de manhã, quer morar fora.",
+      "metadata": {
+        "stressLevel": "medium",
+        "energyLevel": "high"
+      },
+      "updatedAt": "2024-11-23T06:00:00.000Z"
+    }
+  ]
+}
