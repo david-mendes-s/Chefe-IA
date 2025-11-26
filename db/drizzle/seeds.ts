@@ -10,7 +10,9 @@ import {
   checkoutLogs,
   userMemory,
 } from "@/db/drizzle/schemas";
-import seedData from "@/db/seeds/seed.json";
+import seedDataRaw from "@/db/seeds/seed.json";
+
+const seedData = seedDataRaw as any;
 
 (async () => {
   console.log("🌱 Starting database seeding...");
@@ -31,7 +33,7 @@ import seedData from "@/db/seeds/seed.json";
     // Inserir usuários
     console.log("👥 Inserting users...");
     await db.insert(user).values(
-      seedData.users.map((u) => ({
+      seedData.users.map((u: any) => ({
         ...u,
         createdAt: new Date(u.createdAt),
         updatedAt: new Date(u.updatedAt),
@@ -43,7 +45,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("🔐 Inserting accounts...");
     if (seedData.accounts.length > 0) {
       await db.insert(account).values(
-        seedData.accounts.map((a) => ({
+        seedData.accounts.map((a: any) => ({
           ...a,
           createdAt: new Date(a.createdAt),
           updatedAt: new Date(a.updatedAt),
@@ -62,7 +64,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("🔑 Inserting sessions...");
     if (seedData.sessions.length > 0) {
       await db.insert(session).values(
-        seedData.sessions.map((s) => ({
+        seedData.sessions.map((s: any) => ({
           ...s,
           createdAt: new Date(s.createdAt),
           updatedAt: new Date(s.updatedAt),
@@ -76,8 +78,10 @@ import seedData from "@/db/seeds/seed.json";
     console.log("✉️  Inserting verifications...");
     if (seedData.verifications.length > 0) {
       await db.insert(verification).values(
-        seedData.verifications.map((v) => ({
-          ...v,
+        seedData.verifications.map((v: any) => ({
+          id: v.id,
+          identifier: v.identifier,
+          value: v.value,
           createdAt: new Date(v.createdAt),
           updatedAt: new Date(v.updatedAt),
           expiresAt: new Date(v.expiresAt),
@@ -90,7 +94,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("🎯 Inserting contexts...");
     if (seedData.contexts.length > 0) {
       await db.insert(contexts).values(
-        seedData.contexts.map((c) => ({
+        seedData.contexts.map((c: any) => ({
           ...c,
           createdAt: new Date(c.createdAt),
           updatedAt: new Date(c.updatedAt),
@@ -104,7 +108,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("🔄 Inserting daily cycles...");
     if (seedData.dailyCycles.length > 0) {
       await db.insert(dailyCycles).values(
-        seedData.dailyCycles.map((d) => ({
+        seedData.dailyCycles.map((d: any) => ({
           ...d,
           createdAt: new Date(d.createdAt),
           updatedAt: new Date(d.updatedAt),
@@ -119,7 +123,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("✅ Inserting tasks...");
     if (seedData.tasks.length > 0) {
       await db.insert(tasks).values(
-        seedData.tasks.map((t) => ({
+        seedData.tasks.map((t: any) => ({
           ...t,
           createdAt: new Date(t.createdAt),
           updatedAt: new Date(t.updatedAt),
@@ -134,7 +138,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("📝 Inserting checkout logs...");
     if (seedData.checkoutLogs.length > 0) {
       await db.insert(checkoutLogs).values(
-        seedData.checkoutLogs.map((l) => ({
+        seedData.checkoutLogs.map((l: any) => ({
           ...l,
           createdAt: new Date(l.createdAt),
         }))
@@ -146,7 +150,7 @@ import seedData from "@/db/seeds/seed.json";
     console.log("🧠 Inserting user memory...");
     if (seedData.userMemory.length > 0) {
       await db.insert(userMemory).values(
-        seedData.userMemory.map((m) => ({
+        seedData.userMemory.map((m: any) => ({
           ...m,
           updatedAt: new Date(m.updatedAt),
         }))

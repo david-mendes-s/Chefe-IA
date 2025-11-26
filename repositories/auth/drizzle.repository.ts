@@ -8,8 +8,3 @@ export default class DrizzleRepository implements UserRepository {
     return users;
   }
 }
-
-(() => {
-  const userRepository = new DrizzleRepository();
-  userRepository.findAll().then((users) => console.log(users));
-})();

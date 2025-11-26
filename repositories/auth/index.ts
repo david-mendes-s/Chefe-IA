@@ -1,4 +1,4 @@
-import DrizzleRepository from "./drizzle.respository";
+import DrizzleRepository from "./drizzle.repository";
 
 import { UserRepository } from "./interface.user.repository";
 
