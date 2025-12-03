@@ -8,13 +8,10 @@ import {
   Settings2,
   Sparkles,
   LifeBuoy,
-  Send,
-  LogOut, // Caso precise no futuro
   Command
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
 import {
@@ -27,14 +24,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-const data = {
-  user: {
-    // Isso aqui será substituído dinamicamente pelo session.user depois
-    name: "João Silva",
-    email: "joao@email.com",
-    avatar: "https://i.pravatar.cc/150?img=1",
-  },
-
+const getMenuData = () => ({
   // MENU PRINCIPAL (O fluxo de trabalho)
   navMain: [
     {
@@ -57,10 +47,6 @@ const data = {
         {
           title: "Metas Ativas",
           url: "/dashboard/goals",
-        },
-        {
-          title: "Criar Nova Meta",
-          url: "/dashboard/goals/new",
         },
       ],
     },
@@ -103,9 +89,26 @@ const data = {
 
   // Deixe vazio para não renderizar a seção "Projects" que veio no template
   projects: []
+})
+
+type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
+  user?: {
+    name: string
+    email: string
+    avatar: string
+  }
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
+  const data = getMenuData()
+
+  // Fallback caso não receba o usuário
+  const userData = user || {
+    name: "Visitante",
+    email: "guest@example.com",
+    avatar: "https://i.pravatar.cc/150",
+  }
+
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>
@@ -131,7 +134,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={userData} />
       </SidebarFooter>
     </Sidebar>
   )

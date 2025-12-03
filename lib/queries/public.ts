@@ -1,4 +1,4 @@
-import { userRepository } from "@/repositories/auth";
+import { userRepository } from "@/repositories";
 import { cacheLife } from "next/cache";
 
 export async function listUsersFindAll() {

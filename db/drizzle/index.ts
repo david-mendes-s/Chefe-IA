@@ -4,7 +4,7 @@ import * as schema from "./schemas";
 
 const db = drizzle(process.env.DATABASE_URL!, {
   schema,
-  logger: true,
+  logger: false,
 });
 
 export default db;
