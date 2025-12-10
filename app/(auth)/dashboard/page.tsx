@@ -68,7 +68,7 @@ export default async function DashboardPage() {
           <CardContent className="p-0"> {/* Remova o padding aqui, a tabela cuidará disso */}
 
             {/* 🆕 Substituímos a lista de divs pela Tabela */}
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto px-6">
               <TaskTable tasks={tasksActivesToday} />
             </div>
 

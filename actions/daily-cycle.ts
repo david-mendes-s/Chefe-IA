@@ -3,7 +3,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import db from '@/db/drizzle';
-import { contexts, dailyCycles, tasks } from '@/db/drizzle/schemas';
+import { contexts, dailyCycles, tasks, userMemory } from '@/db/drizzle/schemas';
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import aiClient from '@/lib/ai-client'; // 👈 NOVO CLIENTE LLM
@@ -42,6 +42,15 @@ export async function generateDailyCycle() {
 
   // 1. Verificar se o ciclo já foi gerado hoje (lógica omitida para foco)
 
+  // 1.1 NOVO PASSO: Buscar a Memória de Curto Prazo (Lição de ontem)
+  const userMemoryData = await db.query.userMemory.findFirst({
+    where: eq(userMemory.userId, session.user.id),
+  });
+
+  const shortTermLesson = userMemoryData?.shortTermSummary
+    ? `Baseie-se também nesta Lição de Curto Prazo de ontem: "${userMemoryData.shortTermSummary}"`
+    : '';
+
   try {
     // 2. Buscar Objetivos (Contextos) Reais
     const activeContexts = await db.query.contexts.findMany({
@@ -62,8 +71,8 @@ export async function generateDailyCycle() {
     ).join('\n---\n');
 
     // 3. Criar o Prompt
-
-    const systemInstruction = `Você é o Chefe IA. Sua missão é ser um assistente de produtividade rigoroso e focado em resultados. O tom deve ser profissional, direto e motivador. Você DEVE gerar um Briefing Matinal e uma lista de 3 a 5 Missões Diárias (tasks) estritamente focadas em atacar os Objetivos Ativos fornecidos. Seja implacável com os prazos (deadlines). Sua resposta DEVE ser um objeto JSON que se encaixe no schema fornecido.`;
+    // ALTERAÇÃO NA systemInstruction: Adicionar a memória para guiar o tom e foco
+    const systemInstruction = `Você é o Chefe IA. Sua missão é ser um assistente de produtividade rigoroso e focado em resultados. O tom deve ser profissional, direto e motivador. ${shortTermLesson} Você DEVE gerar um Briefing Matinal e uma lista de 3 a 5 Missões Diárias (tasks) estritamente focadas em atacar os Objetivos Ativos fornecidos. Seja implacável com os prazos (deadlines). Sua resposta DEVE ser um objeto JSON que se encaixe no schema fornecido.`;
 
     const userPrompt = `
     Hoje é: ${new Date().toLocaleDateString('pt-BR')}.

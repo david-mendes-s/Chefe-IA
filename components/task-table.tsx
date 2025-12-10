@@ -1,6 +1,7 @@
 // src/components/dashboard/TaskTable.tsx
 'use client';
 
+import toggleTaskStatus from "@/actions/toggleTaskStatus";
 import {
   Table,
   TableBody,
@@ -10,6 +11,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Check, X, Clock, Zap, User } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import SpinLoader from "./SpinLoader";
 
 // Definição de tipos para ser mais robusto
 interface Task {
@@ -55,10 +59,26 @@ const getOriginBadge = (origin: Task['origin']) => {
 
 export function TaskTable({ tasks }: TaskTableProps) {
 
+  const [loadingTaskId, setLoadingTaskId] = useState<string | null>(null);
+
   // Futuramente, esta função irá chamar uma Server Action
-  const handleToggleStatus = (taskId: string, currentStatus: string) => {
-    // Implementação da Server Action no próximo passo
-    console.log(`Próxima Ação: Atualizar Task ${taskId} para status 'Done' ou 'Todo'`);
+  const handleToggleStatus = async (taskId: string, currentStatus: string) => {
+    setLoadingTaskId(taskId);
+    try {
+      await toggleTaskStatus(taskId, currentStatus);
+
+      // Mostrar toast de parabéns quando completar a tarefa
+      if (currentStatus !== 'Done') {
+        toast.success('Parabéns! 🎉', {
+          description: 'Você completou mais uma tarefa!',
+          classNames: {
+            description: '!text-gray-900 font-medium'
+          }
+        });
+      }
+    } finally {
+      setLoadingTaskId(null);
+    }
   };
 
 
@@ -91,7 +111,7 @@ export function TaskTable({ tasks }: TaskTableProps) {
             </TableCell>
 
             {/* Coluna 2: Status (Centralizado) */}
-            <TableCell className="text-center align-top py-3">
+            <TableCell className="text-center align-center py-3">
               <div className="flex items-center justify-center gap-2">
                 {getStatusIcon(task.status)}
                 {/* Ocultar o texto do status para economizar espaço e usar ícones */}
@@ -100,20 +120,25 @@ export function TaskTable({ tasks }: TaskTableProps) {
             </TableCell>
 
             {/* Coluna 3: Origem (Centralizado) */}
-            <TableCell className="text-center align-top py-3">
+            <TableCell className="text-center align-center py-3">
               <div className="flex justify-center">
                 {getOriginBadge(task.origin)}
               </div>
             </TableCell>
 
             {/* Coluna 4: Ação (Alinhado à Direita e ao Topo) */}
-            <TableCell className="text-right align-top py-3">
+            <TableCell className="text-right align-center py-3">
               <button
                 onClick={() => handleToggleStatus(task.id, task.status)}
                 className={`p-2 rounded-full transition ${task.status === 'Done' ? 'bg-green-500 hover:bg-green-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-600'}`}
                 title={task.status === 'Done' ? 'Marcar como Pendente' : 'Marcar como Concluída'}
+                disabled={loadingTaskId === task.id}
               >
-                {task.status === 'Done' ? <Clock className="h-4 w-4" /> : <Check className="h-4 w-4" />}
+                {
+                  loadingTaskId === task.id ? <SpinLoader
+                    className="[&_div]:w-5 [&_div]:h-5 border-white" /> :
+                    task.status === 'Done' ? <Clock className="h-4 w-4" /> : <Check className="h-4 w-4" />
+                }
               </button>
             </TableCell>
 
