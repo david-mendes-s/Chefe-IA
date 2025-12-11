@@ -71,7 +71,7 @@ export default async function DashboardPage() {
             {/* 🆕 Kanban Board */}
             <div className="overflow-x-auto px-1">
               {/* <TaskTable tasks={tasksActivesToday} /> */}
-              <KanbanBoard tasks={tasksActivesToday as any} />
+              <KanbanBoard tasks={tasksActivesToday as any} dailyCycleId={activeCycle.id} />
             </div>
 
           </CardContent>
