@@ -34,6 +34,9 @@ export default class DrizzleRepository implements UserRepository {
   async findTasksToday(dailyCycleId: string): Promise<TaskModel[]> {
     const listTasks = await db.query.tasks.findMany({
       where: (eq(tasks.dailyCycleId, dailyCycleId)),
+      with: {
+        context: true,
+      }
     });
 
     return listTasks;

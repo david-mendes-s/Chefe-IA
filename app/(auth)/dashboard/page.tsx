@@ -10,7 +10,8 @@ import {
 
 import { listDailyCiclesUser, listTasksToday } from "@/lib/queries/admin";
 import { ButtonBriefing } from "@/components/ButtonBriefing";
-import { TaskTable } from "@/components/task-table";
+// import { TaskTable } from "@/components/task-table";
+import { KanbanBoard } from "@/components/kanban/board";
 
 export default async function DashboardPage() {
   // 1. Obter sessão do usuário autenticado
@@ -67,9 +68,10 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent className="p-0"> {/* Remova o padding aqui, a tabela cuidará disso */}
 
-            {/* 🆕 Substituímos a lista de divs pela Tabela */}
-            <div className="overflow-x-auto px-6">
-              <TaskTable tasks={tasksActivesToday} />
+            {/* 🆕 Kanban Board */}
+            <div className="overflow-x-auto px-1">
+              {/* <TaskTable tasks={tasksActivesToday} /> */}
+              <KanbanBoard tasks={tasksActivesToday as any} />
             </div>
 
           </CardContent>

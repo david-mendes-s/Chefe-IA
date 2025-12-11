@@ -130,7 +130,7 @@ export const tasks = pgTable("tasks", {
   }),
   title: text("title").notNull(),
   aiReasoning: text("ai_reasoning"),
-  status: text("status", { enum: ["Todo", "Done", "Failed"] })
+  status: text("status", { enum: ["Todo", "In_Progress", "Done", "Failed"] })
     .default("Todo")
     .notNull(),
   userFeedback: text("user_feedback"),
