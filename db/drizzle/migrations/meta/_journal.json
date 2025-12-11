@@ -8,6 +8,13 @@
       "when": 1763907001101,
       "tag": "0000_flaky_sister_grimm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1765410424929,
+      "tag": "0001_stormy_frank_castle",
+      "breakpoints": true
     }
   ]
 }

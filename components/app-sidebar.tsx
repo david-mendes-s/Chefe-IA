@@ -40,6 +40,12 @@ const getMenuData = () => ({
       ],
     },
     {
+      title: "Chat com Chefe",
+      url: "/chat",
+      icon: Sparkles, // Using Sparkles as a placeholder or import MessageSquare
+      isActive: false,
+    },
+    {
       title: "Meus Objetivos", // Era "Models"
       url: "/dashboard/goals",
       icon: Target,

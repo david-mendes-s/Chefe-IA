@@ -168,6 +168,16 @@ export const userMemory = pgTable("user_memory", {
     .notNull(),
 });
 
+export const messages = pgTable("messages", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  content: text("content").notNull(),
+  role: text("role", { enum: ["user", "assistant", "system"] }).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 // Relacionamentos
 
 export const userRelations = relations(user, ({ many, one }) => ({
@@ -175,6 +185,7 @@ export const userRelations = relations(user, ({ many, one }) => ({
   accounts: many(account),
   contexts: many(contexts),
   dailyCycles: many(dailyCycles),
+  messages: many(messages),
   memory: one(userMemory, {
     fields: [user.id],
     references: [userMemory.userId],
@@ -233,6 +244,13 @@ export const checkoutLogsRelations = relations(checkoutLogs, ({ one }) => ({
 export const userMemoryRelations = relations(userMemory, ({ one }) => ({
   user: one(user, {
     fields: [userMemory.userId],
+    references: [user.id],
+  }),
+}));
+
+export const messagesRelations = relations(messages, ({ one }) => ({
+  user: one(user, {
+    fields: [messages.userId],
     references: [user.id],
   }),
 }));
